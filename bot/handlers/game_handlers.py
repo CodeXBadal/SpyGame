@@ -12,7 +12,7 @@ from bot.handlers.common import (
     rate_limited,
 )
 from bot.keyboards.lobby_kb import lobby_keyboard, voting_keyboard
-from bot.models.game import GamePhase, GameStatus, Role
+from bot.models.game import GamePhase, GameStatus, PlayerModel, Role
 from bot.services.container import get_container
 from bot.utils.logger import get_logger
 from bot.utils.text import escape_md, format_user_link
@@ -29,7 +29,7 @@ def _format_lobby_text(game) -> str:
     lines = [
         "🕵️ *Spy Game Lobby*",
         "",
-        f"Players: *{game.player_count}/{game.max_players}* (min {game.min_players})",
+        f"Players: *{game.player_count}/{game.max_players}* \\(min {game.min_players}\\)",
         "",
     ]
     if game.players:
@@ -90,10 +90,13 @@ async def cmd_startgame(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         await update.effective_message.reply_text(f"⚠️ {error}")
         return
 
-    # Auto-join host
-    game, _ = await container.game.join(
-        chat.id, user.id, user.username, user.full_name or ""
+    # Auto-join host directly (calling join() would deadlock — same lock)
+    game.players[str(user.id)] = PlayerModel(
+        user_id=user.id,
+        username=user.username,
+        full_name=user.full_name or "",
     )
+    await container.game._persist(game)
 
     sent = await update.effective_message.reply_text(
         _format_lobby_text(game),
