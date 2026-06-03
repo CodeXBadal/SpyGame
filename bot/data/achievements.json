@@ -1,0 +1,15 @@
+{
+  "achievements": [
+    {"code": "first_game", "name": "First Game", "description": "Play your first game", "metric": "games_played", "threshold": 1, "reward_xp": 20, "reward_coins": 50, "icon": "🎮"},
+    {"code": "first_win", "name": "First Win", "description": "Win your first game", "metric": "wins", "threshold": 1, "reward_xp": 30, "reward_coins": 75, "icon": "🏅"},
+    {"code": "wins_10", "name": "Veteran", "description": "Win 10 games", "metric": "wins", "threshold": 10, "reward_xp": 100, "reward_coins": 200, "icon": "🥈"},
+    {"code": "wins_50", "name": "Champion", "description": "Win 50 games", "metric": "wins", "threshold": 50, "reward_xp": 500, "reward_coins": 1000, "icon": "🥇"},
+    {"code": "wins_100", "name": "Legend", "description": "Win 100 games", "metric": "wins", "threshold": 100, "reward_xp": 1500, "reward_coins": 3000, "icon": "👑"},
+    {"code": "master_spy", "name": "Master Spy", "description": "Win 25 games as Spy", "metric": "spy_wins", "threshold": 25, "reward_xp": 600, "reward_coins": 1200, "icon": "🕵️"},
+    {"code": "master_detective", "name": "Master Detective", "description": "Win 25 games as Civilian", "metric": "civilian_wins", "threshold": 25, "reward_xp": 600, "reward_coins": 1200, "icon": "🔎"},
+    {"code": "games_100", "name": "Centurion", "description": "Play 100 games", "metric": "games_played", "threshold": 100, "reward_xp": 700, "reward_coins": 1500, "icon": "💯"},
+    {"code": "games_500", "name": "Marathoner", "description": "Play 500 games", "metric": "games_played", "threshold": 500, "reward_xp": 3000, "reward_coins": 7500, "icon": "🚀"},
+    {"code": "correct_guesses_10", "name": "Sharp Mind", "description": "Make 10 correct spy guesses", "metric": "correct_guesses", "threshold": 10, "reward_xp": 400, "reward_coins": 800, "icon": "🎯"},
+    {"code": "correct_votes_25", "name": "Eagle Eye", "description": "Cast 25 correct votes", "metric": "correct_votes", "threshold": 25, "reward_xp": 500, "reward_coins": 900, "icon": "🦅"}
+  ]
+}
